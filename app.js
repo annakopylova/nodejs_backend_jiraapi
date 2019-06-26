@@ -5,13 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let JiraClient = require('jira-connector');
 require('datejs');
+let cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var taskCountRouter = require('./routes/taskcount');
 var taskLabels = require('./routes/tasklabels');
 var taskLifespan = require('./routes/tasklifespan');
-var taskVersion = require('./routes/taskversions')
+var taskVersion = require('./routes/taskversions');
 
 var jira = new JiraClient({
   host: 'leffsu.atlassian.net',
@@ -22,24 +23,9 @@ var jira = new JiraClient({
   // strictSSL: true // One of optional parameters
 });
 
-
-// Количество задач определенного типа с определенным labels
-
-var search_options = {
-  jql: 'labels = \'label2\'',
-};
-
-jira.search.search(search_options, function (error, result) {
-  // console.log(error);
-  // console.log(result)
-});
-
-// Количество задач до определенной версии
-
-// ??????????????????????
-
 var app = express();
 
+app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
