@@ -14,9 +14,8 @@ async function getResponse(issuekey) {
             issueKey: issuekey
         }, function (error, issue) {
             var creationDate = Date.parse(issue.fields.created);
-            var resolutionDate = Date.parse(issue.fields.resolutiondate);
-            // console.log(creationDate);
-            // console.log(resolutionDate);
+            // var resolutionDate = Date.parse(issue.fields.resolutiondate);
+            var resolutionDate = Date.parse(issue.fields.updated);
 
             var numberdifference = resolutionDate - creationDate;
 

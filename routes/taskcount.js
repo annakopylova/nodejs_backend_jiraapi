@@ -29,6 +29,7 @@ async function getResponse(typeId){
             // console.log(error);
             // console.log(result)
             resolve(result);
+            
         });
     })
 }
